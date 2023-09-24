@@ -1,1 +1,1 @@
-# component_eeg_app
+# component_app_eeg
