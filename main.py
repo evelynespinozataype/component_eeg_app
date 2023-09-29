@@ -4,7 +4,7 @@ import time
 import mindwave
 import pandas as pd
 from datetime import datetime
-import connection_remote
+import remote
 
 headset = mindwave.Headset('COM4')
 time.sleep(10)
@@ -32,6 +32,7 @@ while True:
         df.to_csv('raw.csv', mode='a', index=False, header=False)
         json = df.to_json()
         data = [1,2,3,4,5,6]
-        connection_remote.sendValue(json) #sending data to AI model/Aquarela
+        #connection_remote.sendValue(json) #sending data to AI model/Aquarela
+        remote.send_brainwaves(json)
         values = []
         
