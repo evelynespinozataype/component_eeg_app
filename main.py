@@ -1,5 +1,5 @@
-#! python3
 #https://github.com/tongplw/Mindwave
+# execute main.py
 import time
 import mindwave
 import pandas as pd
@@ -29,6 +29,7 @@ while True:
     # save data every 10 lines
     if len(values) % 1024 == 0:
         df = pd.DataFrame(values)
+        df.drop_duplicates() #Elimina duplicados
         df.to_csv('raw.csv', mode='a', index=False, header=False)
         json = df.to_json()
         #data = {'Name': ['John', 'Anna', 'Peter'],'Age': [28, 24, 35]}
