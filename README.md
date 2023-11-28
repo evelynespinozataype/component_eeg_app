@@ -9,3 +9,9 @@ you can buy it from https://store.neurosky.com/
 ## Star the App
 To start the application execute the following comand
 python main.py
+
+# MindWave Application for web
+https://github.com/tongplw/Mindwave
+
+execute main.py
+

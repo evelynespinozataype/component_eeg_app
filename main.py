@@ -1,5 +1,3 @@
-#https://github.com/tongplw/Mindwave
-# execute main.py
 import time
 import mindwave
 import pandas as pd
@@ -30,7 +28,9 @@ while True:
     if len(values) % 1024 == 0:
         df = pd.DataFrame(values)
         df.drop_duplicates() #Elimina duplicados
-        df.to_csv('raw.csv', mode='a', index=False, header=False)
+        now = datetime.now()    #get date
+        path_name = 'data/raw_eeg_'+ now.strftime('%Y-%m-%d_%H-%M') +'.csv' #path name
+        df.to_csv(path_name, mode='a', index=False, header=False)
         json = df.to_json()
         #data = {'Name': ['John', 'Anna', 'Peter'],'Age': [28, 24, 35]}
         send_brainwaves(json) #send rawdata to remote

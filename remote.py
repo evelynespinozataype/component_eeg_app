@@ -10,12 +10,13 @@ def on_connect():
 def on_disconnect():
     print('diconnected from server 4000')
 
-sio.connect('http://localhost:4000',namespaces=['/remote'])
+#sio.connect('http://192.168.15.6:4000',namespaces=['/remote_eegapp'])
+sio.connect('http://localhost:4000',namespaces=['/remote_eegapp'])
 
 def send_brainwaves(data):
     #brain_data = data
     #print('Sending:', data)
-    sio.emit('join_comp_brainwave_app',data, namespace='/remote')
+    sio.emit('join_comp_brainwave_app',data, namespace='/remote_eegapp')
 
 # Solo para test
 #sio.sleep(2)
@@ -26,9 +27,3 @@ def send_brainwaves(data):
 # Solo para test
 #brain_data = {'Name': ['John', 'Anna', 'Peter'],'Age': [28, 24, 35]}
 #sio.emit('join_comp_brainwave_app',brain_data)
-
-#values = main.values
-#print('VALORES',values)
-#def sendValue(values):
-#    brain_data = values
-#    sio.emit('brain_data',brain_data)
