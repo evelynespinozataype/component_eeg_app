@@ -2,7 +2,7 @@ import time
 import mindwave
 import pandas as pd
 from datetime import datetime
-from remote import *
+#from remote import *
 
 headset = mindwave.Headset('COM4')
 time.sleep(10)
@@ -27,12 +27,12 @@ while True:
     # save data every 10 lines
     if len(values) % 1024 == 0:
         df = pd.DataFrame(values)
-        df.drop_duplicates() #Elimina duplicados
+        df.drop_duplicates(subset=df.columns[0], keep=False, inplace=True) #Elimina duplicados
         now = datetime.now()    #get date
         path_name = 'data/raw_eeg_'+ now.strftime('%Y-%m-%d_%H-%M') +'.csv' #path name
         df.to_csv(path_name, mode='a', index=False, header=False)
         json = df.to_json()
         #data = {'Name': ['John', 'Anna', 'Peter'],'Age': [28, 24, 35]}
-        send_brainwaves(json) #send rawdata to remote
+        #send_brainwaves(json) #send rawdata to remote
         values = []
         
